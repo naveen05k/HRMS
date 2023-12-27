@@ -10,24 +10,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@Getter
-@Setter
+
 @Entity
 @Table(name = "employees")
-public class Employees  implements Serializable{
+public class Employees implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,14 +64,14 @@ public class Employees  implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "updated_at")
 	private Date updated_at;
+	
+	@Lob
+	private byte[] empImage;
 
-	
-	
-	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="fk_add_id")	
+	@JoinColumn(name = "fk_add_id")
 	private Address address;
-	
+
 	public Long getEmpId() {
 		return empId;
 	}
@@ -119,7 +111,6 @@ public class Employees  implements Serializable{
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
 
 	public Date getDateOfBirth() {
 		return dateOfBirth;
@@ -192,10 +183,13 @@ public class Employees  implements Serializable{
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
 
-	
-	
+	public byte[] getEmpImage() {
+		return empImage;
+	}
 
-	
+	public void setEmpImage(byte[] empImage) {
+		this.empImage = empImage;
+	}
+
 }

@@ -18,6 +18,7 @@ public class EmployeeRequest {
 	private Long managerId;
 	private LocalTime updated_at;
 	private LocalTime created_at;
+	private byte[] empImage;
 	private AddressRequest addressmodel;
 	public String getEmpId() {
 		return empId;
@@ -140,6 +141,15 @@ public class EmployeeRequest {
 	public void setAddressmodel(AddressRequest addressmodel) {
 		this.addressmodel = addressmodel;
 	}
+
+	public byte[] getEmpImage() {
+		return empImage;
+	}
+
+	public void setEmpImage(byte[] empImage) {
+		this.empImage = empImage;
+	}
+	
 
 	
 	
